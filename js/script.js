@@ -9,6 +9,7 @@ const contar = (segundos) => {
       if(segundos == 0){
         temporizador.style.background = 'red';
         btnEnvioReinicio.textContent='Reiniciar';
+
       }else{
         temporizador.style.background = 'green';
       }
@@ -26,3 +27,7 @@ const btnEnvioReinicio = document.getElementById('btnEnvioReinicio');
 
 // empiezo el conteo regresivo
 contar(30);
+
+btnEnvioReinicio.addEventListener('click', ()=>{
+  location.reload();
+})
