@@ -2,12 +2,16 @@
 // Funcion que realiza  el conteo regresivo
 const contar = (segundos) => {
   temporizador.style.background = 'green';
+  btnEnvioReinicio.textContent='Enviar';
   let conteo = setInterval(() => {
     if (segundos > 0) {
       segundos -= 1;
-      (segundos == 0) ?
-        temporizador.style.background = 'red' :
+      if(segundos == 0){
+        temporizador.style.background = 'red';
+        btnEnvioReinicio.textContent='Reiniciar';
+      }else{
         temporizador.style.background = 'green';
+      }
       temporizador.textContent = segundos;
     } else {
       clearInterval(conteo);
@@ -18,5 +22,7 @@ const contar = (segundos) => {
 
 // Programa Principal
 const temporizador = document.getElementById('temporizador');
-// empiezo el conte regresivo
+const btnEnvioReinicio = document.getElementById('btnEnvioReinicio');
+
+// empiezo el conteo regresivo
 contar(30);
