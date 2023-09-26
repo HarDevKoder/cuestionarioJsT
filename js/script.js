@@ -26,7 +26,7 @@ const temporizador = document.getElementById('temporizador');
 const btnEnvioReinicio = document.getElementById('btnEnvioReinicio');
 
 // Conteo regresivo
-contar(10);
+contar(30);
 
 // Botón Envio/Reinicio
 btnEnvioReinicio.addEventListener('click', () => {
