@@ -1,16 +1,17 @@
 'use strict';
+let reiniciarProceso = false;
 // Funcion que realiza  el conteo regresivo
 const contar = (segundos) => {
   temporizador.style.background = 'green';
-  btnEnvioReinicio.textContent='Enviar';
+  btnEnvioReinicio.textContent = 'Enviar';
   let conteo = setInterval(() => {
     if (segundos > 0) {
       segundos -= 1;
-      if(segundos == 0){
+      if (segundos == 0) {
         temporizador.style.background = 'red';
-        btnEnvioReinicio.textContent='Reiniciar';
-
-      }else{
+        btnEnvioReinicio.textContent = 'Reiniciar';
+        reiniciarProceso = true;
+      } else {
         temporizador.style.background = 'green';
       }
       temporizador.textContent = segundos;
@@ -20,14 +21,18 @@ const contar = (segundos) => {
   }, 1000);
 }
 
-
 // Programa Principal
 const temporizador = document.getElementById('temporizador');
 const btnEnvioReinicio = document.getElementById('btnEnvioReinicio');
 
-// empiezo el conteo regresivo
-contar(30);
+// Conteo regresivo
+contar(10);
 
-btnEnvioReinicio.addEventListener('click', ()=>{
-  location.reload();
+// Botón Envio/Reinicio
+btnEnvioReinicio.addEventListener('click', () => {
+  if (reiniciarProceso) {
+    location.reload();
+  } else {
+    alert('Datos Enviados:');
+  }
 })
