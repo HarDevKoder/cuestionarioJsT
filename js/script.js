@@ -5,7 +5,9 @@ const contar = (segundos) => {
   let conteo = setInterval(() => {
     if (segundos > 0) {
       segundos -= 1;
-      (segundos == 0) ? temporizador.style.background = 'red' : temporizador.style.background = 'green';
+      (segundos == 0) ?
+        temporizador.style.background = 'red' :
+        temporizador.style.background = 'green';
       temporizador.textContent = segundos;
     } else {
       clearInterval(conteo);
