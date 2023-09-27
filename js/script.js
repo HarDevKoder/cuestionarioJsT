@@ -54,8 +54,7 @@ const resultados = () =>{
   4- ${respuesta04.value}
   5- ${respuesta05.value}
         
-         Tu Calificación es: ${nota}`);
-              
+  Tu Calificación es: ${nota}`);         
   location.reload();
 }
 
