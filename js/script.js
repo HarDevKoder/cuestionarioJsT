@@ -44,14 +44,15 @@ const calificaRespuestas = () =>{
   return nota;
 }
 
+//Función que muestra los resultados 
 const resultados = () =>{
   nota = calificaRespuestas();
   alert(`Respuestas enviadas:
-              1- ${respuesta01.value}
-              2- ${respuesta02.value}
-              3- ${respuesta03.value}
-              4- ${respuesta04.value}
-              5- ${respuesta05.value}
+  1- ${respuesta01.value}
+  2- ${respuesta02.value}
+  3- ${respuesta03.value}
+  4- ${respuesta04.value}
+  5- ${respuesta05.value}
         
          Tu Calificación es: ${nota}`);
               
@@ -59,8 +60,10 @@ const resultados = () =>{
 }
 
 // Programa Principal
+document.querySelectorAll('input[type="text"]').forEach(input => input.disabled = true);
 btnComandos.addEventListener('click', () => {
   if (textoBotonComandos === 'Iniciar') {
+    document.querySelectorAll('input[type="text"]').forEach(input => input.disabled = false);
     temporizador.textContent = '30';
     contar(30);
   } else {
