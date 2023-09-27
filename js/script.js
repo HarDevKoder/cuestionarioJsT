@@ -1,18 +1,31 @@
 'use strict';
-let reiniciarProceso = false;
+// Variables Globales
+const temporizador = document.getElementById('temporizador');
+const btnComandos = document.getElementById('btnComandos');
+let respuesta01 = document.getElementById('respuesta01');
+let respuesta02 = document.getElementById('respuesta02');
+let respuesta03 = document.getElementById('respuesta03');
+let respuesta04 = document.getElementById('respuesta04');
+let respuesta05 = document.getElementById('respuesta05');
+let textoBotonComandos = 'Iniciar';
+let nota=0;
+
 // Funcion que realiza  el conteo regresivo
 const contar = (segundos) => {
   temporizador.style.background = 'green';
-  btnEnvioReinicio.textContent = 'Enviar';
+  btnComandos.textContent = 'Enviar';
   let conteo = setInterval(() => {
     if (segundos > 0) {
       segundos -= 1;
-      if (segundos == 0) {
+      if (segundos === 0) {
         temporizador.style.background = 'red';
-        btnEnvioReinicio.textContent = 'Reiniciar';
-        reiniciarProceso = true;
+        btnComandos.textContent = 'Iniciar';
+        textoBotonComandos = 'Iniciar';
+        resultados();
+        document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
       } else {
         temporizador.style.background = 'green';
+        textoBotonComandos = 'Enviar';
       }
       temporizador.textContent = segundos;
     } else {
@@ -21,18 +34,36 @@ const contar = (segundos) => {
   }, 1000);
 }
 
+// Funcion que califica las respuetas
+const calificaRespuestas = () =>{
+  if(respuesta01.value.toLowerCase() ==='html')nota +=1;
+  if(respuesta02.value.toLowerCase()==='css')nota +=1;
+  if(respuesta03.value.toLowerCase()==='javascript')nota +=1;
+  if(respuesta04.value.toLowerCase()==='variables')nota +=1;
+  if(respuesta05.value.toLowerCase()==='settimeout')nota +=1;;
+  return nota;
+}
+
+const resultados = () =>{
+  nota = calificaRespuestas();
+  alert(`Respuestas enviadas:
+              1- ${respuesta01.value}
+              2- ${respuesta02.value}
+              3- ${respuesta03.value}
+              4- ${respuesta04.value}
+              5- ${respuesta05.value}
+        
+         Tu Calificación es: ${nota}`);
+              
+  location.reload();
+}
+
 // Programa Principal
-const temporizador = document.getElementById('temporizador');
-const btnEnvioReinicio = document.getElementById('btnEnvioReinicio');
-
-// Conteo regresivo
-contar(30);
-
-// Botón Envio/Reinicio
-btnEnvioReinicio.addEventListener('click', () => {
-  if (reiniciarProceso) {
-    location.reload();
+btnComandos.addEventListener('click', () => {
+  if (textoBotonComandos === 'Iniciar') {
+    temporizador.textContent = '30';
+    contar(30);
   } else {
-    alert('Datos Enviados:');
+    resultados();
   }
 })

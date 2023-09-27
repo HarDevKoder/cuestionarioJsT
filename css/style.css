@@ -51,7 +51,7 @@ body {
   border-radius: 5px;
 }
 
-.btnEnvioReinicio {
+.btnComandos {
   border: 1px solid indigo;
   height: 100%;
   padding: 9px;
@@ -61,7 +61,7 @@ body {
   cursor: pointer;
 }
 
-.btnEnvioReinicio:hover {
+.btnComandos:hover {
   background: rgba(216, 211, 211, 0.9);
 }
 
