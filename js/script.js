@@ -23,12 +23,12 @@ const contar = (segundos) => {
     if (segundos > 0) {
       segundos -= 1;
       if (segundos === 0) {
+        sonidoTiempoFinalizado();
         temporizador.style.background = 'red';
         btnComandos.textContent = 'Iniciar';
         textoBotonComandos = 'Iniciar';
-        setTimeout(resultados, 1000);
+        setTimeout(resultados, 3000);
         document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
-        sonidoTiempoFinalizado();
       } else {
         temporizador.style.background = 'green';
         textoBotonComandos = 'Enviar';
