@@ -21,7 +21,7 @@ const contar = (segundos) => {
         temporizador.style.background = 'red';
         btnComandos.textContent = 'Iniciar';
         textoBotonComandos = 'Iniciar';
-        resultados();
+        setTimeout(resultados(),1000);
         document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
       } else {
         temporizador.style.background = 'green';
